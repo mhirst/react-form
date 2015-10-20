@@ -27,23 +27,23 @@
         },
         remainingCharacters: function() {
           if (this.state.photoAdded) {
-            return 140 - 23 - this.state.text.length;
+            return 30 - 23 - this.state.text.length;
           } else {
-            return 140 - this.state.text.length;
+            return 30 - this.state.text.length;
           }
         },
         overflowAlert: function(){
           if(this.remainingCharacters() < 0){
             if (this.state.photoAdded) {
-              var beforeOverflowText = this.state.text.substring(140 - 23 - 10, 140 - 23);
-              var overflowText = this.state.text.substring(140 - 23);
+              var beforeOverflowText = this.state.text.substring(30 - 23 - 10, 30 - 23);
+              var overflowText = this.state.text.substring(30 - 23);
             } else {
-              var beforeOverflowText = this.state.text.substring(140 - 10, 140);
-              var overflowText = this.state.text.substring(140);
+              var beforeOverflowText = this.state.text.substring(30 - 10, 30);
+              var overflowText = this.state.text.substring(30);
             }
             return (
             <div className="alert alert-warning ">
-              <strong>Oops! Too Long:</strong>
+              <strong>Your User Name is too long:</strong>
               {beforeOverflowText}
               &nbsp;..<span className="bg-danger">{overflowText}</span>
             </div>
@@ -59,17 +59,16 @@
               <div className="col-sm-4">
               <h1>Sign up</h1>
               { this.overflowAlert() }
-              <label>Do you have any feedback?</label>
-              <input type="email" className="form-control"
-                        onChange={this.handleChange}></input>
-              <br/>
-              <span>{ this.remainingCharacters() }</span>
+              <label>User Name </label><span>&nbsp;({ this.remainingCharacters() } characters left)</span>
+              <input type="text" className="form-control"
+                onChange={this.handleChange}></input>
+              <label>Email</label>
+              <input type="email" className="form-control"></input>
+              <label>Choose A Password</label>
+              <input type="password" className="form-control"></input>
+              <br/>              
               <button className="btn btn-primary pull-right"
                 disabled={this.state.text.length === 0 && !this.state.photoAdded}>Sign Up!</button>
-              <button className="btn btn-default pull-right"
-                onClick={this.togglePhoto}>
-                {this.state.photoAdded ? "✓ Photo Added" : "Add Photo" }
-              </button>
               </div>
               <div className="col-sm-4"></div>
             </div>

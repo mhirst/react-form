@@ -2,6 +2,8 @@
   "devDependencies": {
     "babel-core": "^5.8.25",
     "bootstrap": "^3.3.5",
+    "browser-sync": "^2.9.11",
+    "gulp": "^3.9.0",
     "lodash": "^3.10.1"
   }
 }
